@@ -9,6 +9,7 @@
 * 参考URL：[dyno](https://dinorunner.com/jp/)
 
 ## ゲームの遊び方
+![title](fig/screen_shot.png)
 * スペースでジャンプをして障害物を避けるゲーム
 * コインを取って残機が増える
 * スターを取ると無敵状態になる

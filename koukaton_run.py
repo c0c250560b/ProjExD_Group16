@@ -342,7 +342,7 @@ def main():
     msg_font = pg.font.SysFont(None, 50)
     
     go_title_font = pg.font.SysFont(None, 120)  
-    go_score_font = pg.font.SysFont(None, 60)   
+    go_score_font = pg.font.SysFont(None,  60)   
 
     while True:
         key_lst = pg.key.get_pressed()
