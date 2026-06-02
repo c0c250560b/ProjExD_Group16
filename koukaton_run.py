@@ -438,10 +438,13 @@ def main():
                     life.num -= 1
                     bird.hit_cooldown = 30  # ← 30フレーム無敵
 
+
                 else:
                     pass  # 無敵時間中は何もしない
                 if life.num <= 0:         # ライフが0ならゲームオーバー
                      game_over = True
+                     pg.mixer.music.stop()
+                     se_gameover.play()
 
             # 弾と障害物の衝突
             for beam in beams:
