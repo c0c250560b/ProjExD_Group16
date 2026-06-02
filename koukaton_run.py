@@ -43,9 +43,13 @@ class Bird(pg.sprite.Sprite):
         # キャラクター画像の読み込みとサイズ調整
         self.img_run = pg.transform.scale(pg.image.load("fig/2.png").convert_alpha(), (60, 80))   # 動いている時
         self.img_jump = pg.transform.scale(pg.image.load("fig/6.png").convert_alpha(), (60, 80))  # ジャンプ時
+        self.img_jump_flipped = pg.transform.flip(self.img_jump, True, False)  # ジャンプ時の左右反転画像
         self.img_crouch = pg.transform.scale(pg.image.load("fig/4.png").convert_alpha(), (60, 30))  # しゃがんでいる時
+        self.img_crouch_flipped = pg.transform.flip(self.img_crouch, True, False)
+
          # 無敵画像
-        self.img_invincible = pg.transform.scale(pg.image.load("fig/Gemini_Generated_Image_5cmamr5cmamr5cma.png").convert_alpha(),(80, 80))
+        self.img_invincible_n = pg.transform.scale(pg.image.load("fig/Gemini_Generated_Image_5cmamr5cmamr5cma.png").convert_alpha(),(80, 80))
+        self.img_invincible = pg.transform.flip(self.img_invincible_n, True, False)
         
         # ジャンプ時の効果音を読み込む
         self.se_jump = pg.mixer.Sound("fig/sound/junp.wav")
@@ -83,13 +87,15 @@ class Bird(pg.sprite.Sprite):
         else:
             old_bottom = self.rect.bottom
             old_centerx = self.rect.centerx
+            
             if is_crouching:
-                self.image = self.img_crouch
+                self.image = self.img_crouch_flipped
             elif self.on_ground:
                 self.image = self.img_run
             else:
-                self.image = self.img_jump
+                self.image = self.img_jump_flipped
             self.rect = self.image.get_rect()
+
             if is_crouching:
                 self.rect.bottom = old_bottom
                 self.rect.centerx = old_centerx
